@@ -1,0 +1,330 @@
+import time
+import hashlib
+import re
+
+# ===== Definindo SENHA FORTE ======
+
+def senha_forte(senha):
+    if (len(senha) >= 8 and #verifica se tem 8 dígitos
+        re.search(r"[A-Z]", senha) and
+        re.search(r"[a-z]", senha) and
+        re.search(r"[0-9]", senha) and
+        re.search(r"[!@#$%^&*(),.?\":{}|<>]", senha)):
+        return True
+    return False
+
+def criar_hash_senha(senha):
+    return hashlib.sha256(senha.encode()).hexdigest()
+
+def validar_senha(hash_salvo):
+    nome = (input("Digite o seu nome: "))
+    print(f"Olá {nome}!")
+    for tentativa in range(3):
+        senha = input("Digite sua senha para acessar: ")
+        if criar_hash_senha(senha) == hash_salvo:
+            print("Acesso liberado.\n")
+            return True
+        else:
+            print("Senha incorreta.")
+    print("\nMuitas tentativas. Para sua segurança, encerraremos o programa.\nTente novamente mais tarde.")
+    exit()
+
+# =============== MENU ==================
+def aprender_teoria():
+    while True:
+        print("\nVamos aprender um pouco mais sobre programação?")
+        print("1. Programação Básica")
+        print("2. Python - Saiba Mais")
+        print("0. Voltar")
+        op = input("Escolha: ")
+        if op == '1':
+            prog_teoria()
+        elif op == '2':
+            python_teoria()
+        elif op == '0':
+            break
+        else:
+            print("Opção inválida.")
+            
+#===============MODO APRENDER===============
+            
+def prog_teoria():
+    print("Programação básica é o primeiro passo para desenvolver sistemas, aplicativos, jogos e sites, envolvendo a criação de instruções em linguagens específicas que seguem lógica e sequência. Quem aprende programação básica entende conceitos como variáveis, estruturas de decisão (como if), repetições (como for e while) e funções.")
+    
+def python_teoria():
+    while True:
+        print("\nA programação básica é a porta de entrada para criar soluções com computadores, e Python é uma das melhores linguagens para iniciantes devido à sua sintaxe simples que facilita o aprendizado de conceitos como variáveis, repetições e condicionais. Além disso, Python é uma linguagem poderosa, usada em áreas como desenvolvimento web, automação, análise de dados, IA e robótica, tornando-se uma ótima escolha para quem deseja evoluir na programação.")
+        print("\nAo aprender programação básica com Python, é importante entender alguns conceitos fundamentais:")
+        print("\n>>>Variáveis<<< \nSão espaços na memória usados para guardar informações. Por exemplo, idade = 18 armazena o número 18 na variável chamada idade. Elas são a base para manipular dados no código.")
+        print("\n>>>Condicionais (if, else)<<< \nPermitem que o programa tome decisões. Por exemplo:\nif idade >= 18: \n  print('Você é maior de idade') \nelse:\n  print('Você é menor de idade') \nIsso significa que, dependendo do valor da variável, o programa executa diferentes ações")
+        print("\n>>>Loops(laços de repetição)<<< \nServem para repetir comandos várias vezes. Exemplo:\nfor i in range(11):\n    print('Número:', i)\nEsse código repete a impressão dos números de 0 a 10.")
+        print("\n>>>Vetores/Listas<<<\nSão estruturas que armazenam vários valores. Exemplo: \ncores = ['azul, 'amarelo', 'vermelho']\nprint(cores[0])\nO comando irá imprimir AZUL. As listas facilitam o armazenamento e manipulação de conjuntos de dados.")
+        print("\n\nAlém de programar, é essencial adotar boas práticas em segurança digital, como: \n-Criar senhas fortes, com letras, números e símbolos(ex:S3nh@F0rt3);\n-Evitar phishing, não clicando em links ou emails suspeitos; \n-Fazer backup regularmente para proteger seus dados.")
+        
+        while True:
+            print ("\nVamos aprofundar um pouco mais?")
+            print ("1. Como exibir mensagens na tela")
+            print ("2. Como receber dados do usuário")
+            print ("3. Comandos de condição e para que servem")
+            escolha = input ("Escolha uma opção: ").strip().lower()
+                        
+            if escolha == "1":
+                print ("\nPara exibir mensagens na tela usaremos o comando 'print()'")
+                print ("Exemplo:")
+                print ("print ('Olá mundo!') #comando")
+                print ("Olá mundo! #mensagem exibida")
+                            
+            elif escolha == "2":
+                print("\nO comando INPUT serve para solicitar uma informação ao usuário")
+                print ("Exemplo:")
+                print("nome = input ('Digite seu nome:')")
+                            
+                print ("\nUtilizando o aprendizado do tópico 1, para imprimir a informação fornecida o comando seria:")
+                print("print ('Seu nome é: ', nome)")
+                print("\nDando o seguinte resultado:")
+                print ("Digite seu nome: *espaço para escrever* \nSeu nome é: *dado escrito acima* ")
+            elif escolha == "3":
+                print ("\nOs comandos de condição são IF/ELSE que servem para que o programa tome decisões a partir de condições específicas. A seguir um exemplo para verificar se o número digitado é maior que 5:")
+                print("\nnumero = input ('Digite um número:')")
+                print("  if numero > '5' : \n    print('Este número é maior que 5') \n  else:\n    print('Este número é menor ou igual a 5')")
+            else:
+                print ("Opção Inválida! Tente novamente")
+                continue
+                            
+            print("\nPara exibir outro aprendizado aperte 'P' \nPara retornar ao menu aperte qualquer tecla")
+            
+            voltar = input ("Escolha: ").strip().lower()
+            
+            if voltar == "p":
+                continue
+            else:
+                break
+        break
+
+#===============MODO PRATICAR===============
+def praticar():
+    print("\n>>>>>>>>>> EXERCÍCIO 1: Comando de imprimir <<<<<<<<<<")
+    print("\nOBJETIVO: perguntar o nome do usuário e imprimir uma saudação personalizada")
+    
+    print("\nnome = input('Digite seu nome: ')")
+    resposta_usuario = input("Complete o código para que o programa exiba \n'Olá <nome>! Seja bem vindo(a)!':\n\nComplete: ")
+    
+    if resposta_usuario == "print('Olá', nome, '!Seja bem vindo(a)!')":
+        print("CORRETO!")
+        print("\nOutra opção: \nprint(f'Olá {nome}! Seja bem vindo(a)!')")
+    elif resposta_usuario == "print(f'Olá {nome}! Seja bem vindo(a)!')":
+        print("CORRETO!")
+        print("\nOutra opção: \nprint('Olá', nome, '!Seja bem vindo(a)!')")
+    else:
+        print("INCORRETO!")
+        print("As opções possíveis: \n1.  print(f'Olá {nome}! Seja bem vindo(a)!') \n2.  print('Olá', nome, '!Seja bem vindo(a)!')")
+        
+#EXERCÍCIO 2
+
+    print("\n>>>>>>>>>> EXERCÍCIO 2: Cálculo de IMC <<<<<<<<<<")
+    print("\nOBJETIVO: ler peso (kg) e altura (m), calcular e mostrar o IMC.")
+    print("\nFÓRMULA: imc = peso / (altura ** 2)")
+    
+    print("\npeso = float(input('Digite o seu peso em kg: '))")
+    print("altura = float(input('Digite sua altura em metros: '))")
+    
+    resposta_usuario = input("\nComplete o código para que o programa exiba \n'IMC: <valor do imc>':\n\nComplete: ")
+    if resposta_usuario == "print('IMC:', peso / (altura ** 2) )":
+        print("CORRETO!")
+        print("\nOutra opção: \nimc = peso / altura ** 2 \nprint(f'IMC: {imc:.2f}')")
+    else:
+        print("INCORRETO!")
+        print("As opções possíveis: \n 1.print('IMC:', peso / altura ** 2 ) \n\n2.imc = peso / altura ** 2 \n  print(f'IMC: {imc:.2f}')")
+        
+#EXERCÍCIO 3
+        
+    print("\n>>>>>>>>>> EXERCÍCIO 3: Média Ponderada <<<<<<<<<<")
+    print("OBJETIVO: ler três notas e seus respectivos pesos, calcular média ponderada e exibir resultado")
+    print("\nFÓRMULA: media = (n1*p1 + n2*p2 + n3*p3) / (p1+p2+p3)")
+    
+    print("\nnota1 = float(input('Nota 1: '))")
+    print("peso1 = float(input('Peso da nota 1: '))")
+    print("nota2 = float(input('Nota 2: ''))")
+    print("peso2 = float(input('Peso da nota 2: '))")
+    print("nota3 = float(input('Nota 3: '))")
+    print("peso3 = float(input('Peso da nota 3: '))")
+    
+    resposta_usuario = input("\nInsira no código um comando para calcular a média ponderada, utilizando a variável 'media' para armazenar o cálculo. (Não precisa digitar o comando de imprimir). \nComplete: ")
+        
+    if resposta_usuario == "media = (nota1*peso1 + nota2*peso2 + nota3*peso3) / (peso1+peso2+peso3)":
+        print("CORRETO!")
+        print("\nCompletando o código com: print(f'Média ponderada: {media:.2f}') \nO esperado ao imprimir o resultado seria: \nMédia ponderada: <valor da média ponderada com duas casas decimais>")
+    else:
+        print("INCORRETO!")
+        print("A opção possível: \nmedia = (nota1*peso1 + nota2*peso2 + nota3*peso3) / (peso1+peso2+peso3)")
+        
+#EXERCÍCIO 4
+
+    print("\n>>>>>>>>>> EXERCÍCIO 4: Completar a tabuada usando lista <<<<<<<<<<")
+    print("OBJETIVO: gerar a tabuada de um número n (de 1 a 10) e armazenar em uma lista")
+    
+    print("\nn = int(input('Digite o número para gerar a tabuada: '))")
+    print("tabuada = []")
+    print("\nfor _ in range(_, __):")
+    print("  resultado = n * i")
+    print("  tabuada.append(f'{n} x {i} = {resultado}')")
+    print("\nfor linha in tabuada:")
+    print("  print(linha)")
+    
+    
+    
+    resposta_usuario = input("\nReescreva a linha do código com as partes em branco usando um loop de 1 a 10: ")
+            
+    if resposta_usuario == "for i in range(1, 11):":
+        print("CORRETO!")
+        print("\nAO completar o código o esperado ao imprimir o resultado seria a tabuada de 1 a 10 do valor escolhido pelo usuário.")
+    else:
+        print("INCORRETO!")
+        print("A opção possível: \nfor i in range(1, 11):")
+
+#EXERCÍCIO 5
+    print("\n>>>>>>>>>> EXERCÍCIO 5: Imprimir um elemento da lista <<<<<<<<<<")
+    print("OBJETIVO: usar um comando para exibir um elemento da lista")
+    print("\ncores = ['azul', 'amarelo', 'vermelho', 'verde']")
+    
+    
+    resposta_usuario = input("\nComplete o código para exibir somente a cor 'amarelo' da lista. \nComplete: ")
+                
+    if resposta_usuario == "print(cores[1])":
+        print("CORRETO!")
+        print("\nAo completar o código o resultado esperado era a impressão do elemento 'amarelo' da lista de cores. É definido o número 1 para exibir o segundo item da lista pois em Python o primeiro elemento se inicia no 0 (zero)")
+    else:
+            print("INCORRETO!")
+            print("A opção possível: \nprint(cores[1])")
+
+# ================== QUIZ ==================
+
+quiz_resultados = []
+
+def quiz_perguntas(perguntas):
+    acertos = 0
+    for p in perguntas:
+        print(f"\n{p['pergunta']}")
+        for i, op in enumerate(p['opcoes']):
+            print(f"{i + 1}. {op}")
+        while True:
+            resp = input("Escolha: ")
+            
+            # Verifica se foi digitado as opções
+            if resp.isdigit() and 1 <= int(resp) <= len(p['opcoes']):
+                escolha = int(resp)
+                break
+            else:
+                print("Opção inválida! Por favor digite um número entre 1 e 4.")
+                
+        # Verifica acerto e dá feedback
+        if escolha == p['resposta']:
+            print("Você acertou!")
+            acertos += 1
+        else:
+            corret = p['opcoes'][p['resposta'] - 1]
+            print(f"Você errou! A resposta correta é:\n {p['resposta']}. {corret}")
+            
+    # Mostra a pontuação do nível
+    print(f"\nPontuação deste nível: {acertos}/{len(perguntas)}")
+    quiz_resultados.append(acertos)
+    
+    # Soma o total da pontuação de todos os níveis acessados
+    total_acumulado = sum(quiz_resultados)
+    print(f"Acertos acumulados em todos os níveis até agora: {total_acumulado}\n")
+
+def quiz_facil():
+    perguntas = [
+        {"pergunta": "O que é uma variável em programação?", "opcoes": ["Um tipo de erro", "Um comando de repetição", "Um espaço para armazenar dados", "Uma estrutura que guarda valores para uso posterior"], "resposta": 4},
+        {"pergunta": "Qual desses é um exemplo de senha segura?", "opcoes": ["123456", "senha123", "abcdef", "J#9k!Lp$2Q"], "resposta": 4},
+        {"pergunta": "Qual comando imprime uma mensagem na tela em Python?", "opcoes": ["echo()", "print()", "output()", "write()"], "resposta": 2}
+    ]
+    quiz_perguntas(perguntas)
+
+def quiz_medio():
+    perguntas = [
+        {"pergunta": "Qual estrutura de controle é usada para decisões em Python?", "opcoes": ["switch", "loop", "if", "define"], "resposta": 3},
+        {"pergunta": "Qual dessas opções cria uma função em Python corretamente?", "opcoes": ["function minha_funcao():", "create minha_funcao():", "def minha_funcao():", "new minha_funcao():"], "resposta": 3},
+        {"pergunta": "No contexto tecnológico, phishing é:", "opcoes": ["Pescaria", "Golpe digital", "Antivírus", "Erro de digitação em código"], "resposta": 2}
+    ]
+    quiz_perguntas(perguntas)
+    
+def quiz_dificil():
+    perguntas = [
+        {"pergunta": "O que o código abaixo imprime? \nprint(bool('False'))", "opcoes": ["False", "Erro", "None", "True"], "resposta": 4},
+        {"pergunta": "Qual dessas práticas melhora a segurança de um sistema?", "opcoes": ["Desativar atualizações automáticas", "Usar a mesma senha em todos os sites", "Atualizar o software regularmente", "Compartilhar senhas com colegas de confiança"], "resposta": 3},
+        {"pergunta": "Em segurança digital, o que significa autenticação de dois fatores?", "opcoes": ["Usar duas senhas diferentes", "Entrar em dois dispositivos ao mesmo tempo", "Confirmar identidade com dois métodos (ex: senha + código via SMS)", "Usar dois antivírus no mesmo sistema"], "resposta": 3},
+    ]
+    quiz_perguntas(perguntas)
+
+
+
+# ================== MENU ==================
+
+def menu_aprendizado():
+    while True:
+        print("\n--- APRENDIZADO ---")
+        print("1. Vamos Aprender")
+        print("2. Vamos Praticar")
+        print("0. Voltar")
+        op = input("Escolha: ")
+        if op == '1':
+            aprender_teoria()
+        elif op == '2':
+            praticar()
+        elif op == '0':
+            break
+        else:
+            print("Opção inválida.")
+
+
+def menu_quiz():
+    while True:
+        print("\n--- QUIZ ---")
+        print("1. Nível FÁCIL")
+        print("2. Nível MÉDIO ")
+        print("3. Nível DIFÍCIL")
+        print("0. Voltar")
+        op = input("Escolha: ")
+        if op == '1': quiz_facil()
+        elif op == '2': quiz_medio()
+        elif op == '3': quiz_dificil()
+        elif op == '0': break
+        else: print("Opção inválida.")
+        
+
+def menu():
+    global start_time
+    print("Bem-vindo!")
+    print("\nPara começarmos, devemos criar uma senha forte para sua conta:")
+    print("É obrigatório a senha conter: \n -No mínimo 8 dígitos\n -Letras maíúsculas e minúsculas\n -Números e símbolos especiais (!,@,#,$,%,^,&,*)")
+    print("\nEXEMPLO: S3n#4F0rt3!")
+    while True:
+        senha = input("\nCrie uma senha forte para iniciar: ")
+        if senha_forte(senha):
+            hash_senha = criar_hash_senha(senha)
+            print("Senha criada com sucesso!\n")
+            break
+        else:
+            print("Senha fraca. Use letras maiúsculas, minúsculas, números e símbolos.\n")
+
+    validar_senha(hash_senha)
+    start_time = time.time()
+
+    while True:
+        print("\n=== MENU PRINCIPAL ===")
+        print("1. Aprendizado")
+        print("2. Quiz")
+        print("3. Sair")
+        op = input("Escolha: ")
+        if op == '1': menu_aprendizado()
+        elif op == '2': menu_quiz()
+        elif op == '3':
+            print("Encerrando sistema. Até logo!")
+            break
+        else:
+            print("Opção inválida.")
+
+if __name__ == "__main__":
+    menu()
+
