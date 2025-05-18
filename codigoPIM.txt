@@ -235,7 +235,7 @@ def quiz_perguntas(perguntas):
 
 def quiz_facil():
     perguntas = [
-        {"pergunta": "O que é uma variável em programação?", "opcoes": ["Um tipo de erro", "Um comando de repetição", "Um espaço para armazenar dados", "Uma estrutura que guarda valores para uso posterior"], "resposta": 4},
+        {"pergunta": "O que é uma variável em programação?", "opcoes": ["Um tipo de erro", "Um comando de repetição", "Uma chamada de função", "Uma estrutura que guarda valores para uso posterior"], "resposta": 4},
         {"pergunta": "Qual desses é um exemplo de senha segura?", "opcoes": ["123456", "senha123", "abcdef", "J#9k!Lp$2Q"], "resposta": 4},
         {"pergunta": "Qual comando imprime uma mensagem na tela em Python?", "opcoes": ["echo()", "print()", "output()", "write()"], "resposta": 2}
     ]
